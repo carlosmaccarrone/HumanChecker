@@ -34,9 +34,18 @@ export function HumanCheckerProvider({ children }) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   };
 
-  useEffect(() => clearCanvas(), []);
   useEffect(() => {if (!currentShape) setCurrentShape(getNextShape());}, [currentShape]);
   
+  useEffect(() => {
+    clearCanvas();
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      setHistory([ctx.getImageData(0, 0, canvas.width, canvas.height)]);
+    }
+    if (!currentShape) setCurrentShape(getNextShape());
+  }, []);
+
   // -------------------------
   // Handlers
   // -------------------------
@@ -45,7 +54,11 @@ export function HumanCheckerProvider({ children }) {
     setPrediction(null);
     setFeedback("");
     clearCanvas();
-    setHistory([]);
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      setHistory([ctx.getImageData(0, 0, canvas.width, canvas.height)]);
+    }
     setRedoStack([]);
   };
 
@@ -76,7 +89,11 @@ export function HumanCheckerProvider({ children }) {
     clearCanvas();
     setPrediction(null);
     setFeedback("");
-    setHistory([]);
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      setHistory([ctx.getImageData(0, 0, canvas.width, canvas.height)]);
+    }
     setRedoStack([]);
   };
 
