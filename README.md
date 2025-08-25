@@ -1,3 +1,6 @@
+[![CI/CD](https://github.com/carlosmaccarrone/HumanChecker/actions/workflows/ci.yml/badge.svg)](https://github.com/carlosmaccarrone/HumanChecker/actions/workflows/ci.yml)
+🎬 [Live Demo](https://carlosmaccarrone.github.io/HumanChecker/) – Check out the app running in your browser!
+
 # HumanChecker Frontend
 
 React frontend that consumes the **HumanCheckerBackend** deployed in the cloud.  
