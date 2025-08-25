@@ -1,0 +1,29 @@
+.feedback {
+  text-align: center;
+  color: #7cffb2;
+  font-family: 'Press Start 2P', cursive;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.message {
+  font-size: 1rem;
+  color: #ffdd57;
+  font-weight: bold;
+}
+
+.shape {
+  color: #ffdd57;
+  font-weight: bold;
+}
+
+/* simple fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

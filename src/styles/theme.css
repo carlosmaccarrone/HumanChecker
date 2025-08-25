@@ -1,0 +1,22 @@
+body, #root {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: 
+    url("https://www.transparenttextures.com/patterns/circles.png") repeat,
+    linear-gradient(135deg, #0f0c29 0%, #3f3db0 50%, #24243e 100%);
+  background-size: auto, cover;
+  background-blend-mode: multiply;
+}
+
+/* light overlay to give depth */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  pointer-events: none;
+  z-index: -1;
+}
