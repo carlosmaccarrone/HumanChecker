@@ -10,3 +10,10 @@
   color: #7cffb2;
   font-family: 'JetBrains Mono', monospace;	
 }
+
+@media (max-width: 768px) {
+  .container {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+}
