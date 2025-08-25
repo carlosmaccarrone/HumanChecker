@@ -21,6 +21,7 @@ export default function HumanChecker() {
 
   return (
     <div className={styles.container}>
+      <span className={styles.title}>Try a Square, Circle, or Triangle — see if I can predict it correctly.</span>
       <Prompt currentShape={currentShape} />
       <Canvas canvasRef={canvasRef} startDrawing={startDrawing} />
       <Buttons

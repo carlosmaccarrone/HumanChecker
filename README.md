@@ -1,7 +1,7 @@
 [![CI/CD](https://github.com/carlosmaccarrone/HumanChecker/actions/workflows/ci.yml/badge.svg)](https://github.com/carlosmaccarrone/HumanChecker/actions/workflows/ci.yml)
 🎬 [Live Demo](https://carlosmaccarrone.github.io/HumanChecker/) – Check out the app running in your browser!
 
-# HumanChecker Frontend
+# HumanChecker Frontend – React interface for a TensorFlow-trained shape classifier
 
 React frontend that consumes the **HumanCheckerBackend** deployed in the cloud.  
 
@@ -22,6 +22,12 @@ This project is the user interface for a **hand-drawn shape classifier** with th
 - cross-env  
 - CSS Modules  
 - copy-webpack-plugin  
+
+## Model
+
+- Dataset: **Quick, Draw!**  
+- Framework: **TensorFlow**  
+- The trained model is exported to **ONNX** and loaded by the backend for predictions.
 
 ## Usage
 
