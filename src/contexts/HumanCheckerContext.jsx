@@ -26,12 +26,24 @@ export function HumanCheckerProvider({ children }) {
     return shape;
   };
 
+  const createBlankCanvasData = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    const blank = ctx.createImageData(canvas.width, canvas.height);
+    for (let i = 0; i < blank.data.length; i += 4) {
+      blank.data[i] = 255;     // R
+      blank.data[i + 1] = 255; // G
+      blank.data[i + 2] = 255; // B
+      blank.data[i + 3] = 255; // A
+    }
+    return blank;
+  };
+
   const clearCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#ffffff"; // canvas white background
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(createBlankCanvasData(), 0, 0);
   };
 
   useEffect(() => {if (!currentShape) setCurrentShape(getNextShape());}, [currentShape]);
@@ -57,13 +69,13 @@ export function HumanCheckerProvider({ children }) {
     const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      setHistory([ctx.getImageData(0, 0, canvas.width, canvas.height)]);
+      setHistory([createBlankCanvasData()]);
     }
     setRedoStack([]);
   };
 
   const handleUndo = () => {
-    if (history.length === 0) return;
+    if (history.length <= 1) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const newHistory = [...history];
@@ -71,8 +83,7 @@ export function HumanCheckerProvider({ children }) {
     setRedoStack([last, ...redoStack]);
     setHistory(newHistory);
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    newHistory.forEach((img) => ctx.putImageData(img, 0, 0));
+    ctx.putImageData(newHistory[newHistory.length - 1], 0, 0);
   };
 
   const handleRedo = () => {
