@@ -174,7 +174,7 @@ export function HumanCheckerProvider({ children }) {
     const formData = new FormData();
     formData.append("file", blob, "drawing.png");
 
-    const resp = await fetch("https://humancheckerbackend.onrender.com/predict", {
+    const resp = await fetch("https://humancheckerbackend-production.up.railway.app/predict", {
       method: "POST",
       body: formData,
     });
